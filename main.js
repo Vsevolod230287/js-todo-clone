@@ -11,7 +11,7 @@ btn_aggiungi.click(function() {
   if (inputValue) {
     var nuovaRiga = $('.template .flex').clone();
     listaCompiti.append(nuovaRiga)
-    nuovaRiga.find('div.rowDo').append('<div>' + inputValue + '</div>');
+    nuovaRiga.find('div.rowDo').append(inputValue);
     $('input[name="input"]').val('');
   } else {
     alert("Il compito non può essere vuoto!")
@@ -28,4 +28,24 @@ btn_elimina.click(function() {
     $(this).parents('.flex').remove();
     }
   })
+})
+
+// ---------------------------
+
+var btn_modifica = $('button[name="edit"]');
+
+btn_modifica.click(function() {
+var text_da_modificare = $("input:checked").parent().siblings('.rowDo').text();
+  $("input:checked").parent().siblings('.rowDo').text('');
+  $("input:checked").parent().parent().parent().siblings('.aggiungi').find('input[name="input"]').val($.trim(text_da_modificare));
+});
+
+// -----------------------------------------------
+
+var btn_modifica_completata = $('button[name="finish_edit"]');
+
+btn_modifica_completata.click(function(){
+  var inputBackChecked = $("input:checked");
+  var valueToBack = $('.aggiungi input[name="input"]').val();
+  inputBackChecked.append(valueToBack);
 })
