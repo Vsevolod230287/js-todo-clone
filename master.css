@@ -1,0 +1,13 @@
+
+
+input {
+  display: none;
+}
+
+ol {
+  list-style: none;
+}
+
+ol li span:hover {
+  cursor: pointer;
+}
